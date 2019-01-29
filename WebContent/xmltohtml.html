@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>Converting XML to HTML</title>
+	<script type="text/jaavscript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script src="text/javascript">
+		if(window.XMLHttpRequest)
+		{
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{
+			xmlhttp=new ActiveXObject("MICROSOFT.XMLHTTP");
+		}
+		
+		xmlhttp.open("GET", "book.xml", false);
+		xmlhttp.send();
+		xmlDoc=xmlhttp.responseXML;
+		
+		document.write("<table border='1' width='50%', style='font-size:35px;'>");
+		document.write("<tr><th>Title</th><th>Page</th><th>Publisher</th><th>Year</th></tr>");
+		var x=xmlDoc.getElementByTagName("title");
+		
+		for(int i=1; i<=x.length; i++)
+		{
+			document.write("<tr><td>");
+			document.write(xmlDoc.getElementByTagName("title")[i].childNodes[0].nodeValue);
+			document.write("</td><td>");
+			document.write(xmlDoc.getElementByTagName("pages")[i].childNodes[0].nodeValue);
+			document.write("</td><td>");
+			document.write(xmlDoc.getElementByTagName("publisher")[i].childNodes[0].nodeValue);
+			document.write("</td><td>");
+			document.write(xmlDoc.getElementByTagName("year")[i].childNodes[0].nodeValue);
+			document.write("</td></tr>");
+		}
+		
+		document.write("</table>");
+		
+		
+	</script>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
